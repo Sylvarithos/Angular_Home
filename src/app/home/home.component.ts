@@ -12,14 +12,20 @@ import { HousingService } from "../housing.service";
   styleUrl: "./home.component.css",
 })
 export class HomeComponent {
-  housingLocaionList: Housinglocaion[];
+  housingLocaionList: Housinglocaion[] = [];
   filteredLocationList: Housinglocaion[] = [];
+  readonly baseUrl = "test";
 
   housingService: HousingService = inject(HousingService);
 
   constructor() {
-    this.housingLocaionList = this.housingService.getAllHousingLocations();
-    this.filteredLocationList = this.housingLocaionList;
+    this.housingService
+      .getAllHousingLocations()
+      .then((housingLocaionList: Housinglocaion[]) => {
+        this.housingLocaionList = housingLocaionList;
+        this.filteredLocationList = housingLocaionList;
+      });
+    // this.filteredLocationList = this.housingLocaionList;
   }
 
   filterResults(text: string) {

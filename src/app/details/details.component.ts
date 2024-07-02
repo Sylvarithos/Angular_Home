@@ -16,7 +16,7 @@ export class DetailsComponent {
   route: ActivatedRoute = inject(ActivatedRoute);
   housingService = inject(HousingService);
   housingLocation: Housinglocaion | undefined;
-  housingLocationId = -1;
+  // housingLocationId = -1;
 
   applyForm = new FormGroup({
     firstName: new FormControl(""),
@@ -25,10 +25,13 @@ export class DetailsComponent {
   });
 
   constructor() {
-    this.housingLocationId = Number(this.route.snapshot.params["id"]);
-    this.housingLocation = this.housingService.getHousingLocationById(
-      this.housingLocationId
-    );
+    const housingLocationId = parseInt(this.route.snapshot.params["id"], 10);
+    this.housingService
+      .getHousingLocationById(housingLocationId)
+      .then((housingLocation) => {
+        this.housingLocation = housingLocation;
+        console.log(housingLocation);
+      });
   }
 
   submitApplication() {
