@@ -1,5 +1,5 @@
-/* .listing {
-  background: black;
+.listing {
+  background: gray;
   border-radius: 30px;
   padding-bottom: 30px;
 }
@@ -15,11 +15,11 @@
 }
 .listing-location {
   padding: 10px 20px 20px 20px;
-} */
+}
 /* .listing-location::before {
   content: url("/assets/location-pin.svg") / "";
 } */
-/* section.listing a {
+section.listing a {
   padding-left: 20px;
   text-decoration: none;
   color: var(--primary-color);
@@ -27,4 +27,4 @@
 section.listing a::after {
   content: "\203A";
   margin-left: 5px;
-} */ 
+} 
